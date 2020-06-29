@@ -1,0 +1,140 @@
+﻿@model SendMailDto
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+
+<div id="convert" class="offset">
+
+
+    <!-- Start Jumbotron -->
+    <div class=" m-0 py-5">
+
+        <div class="col-12 os-animation" data-animation="fadeInUp">
+            <h3 class="heading">إنشاء باركود</h3>
+            <div class="heading-underline"></div>
+        </div>
+
+
+        <div class="row text-center px-lg-4 px-xl-5 os-animation" data-animation="fadeInUp">
+
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 form-group mt-lg-5">
+                <form method="post" asp-controller="Home" asp-action="ConvertToQR">
+                    <label id="mylabel">الصق الرابط : </label>
+                    <input class="form-control" type="text" name="InputText" style="text-align: left;" placeholder="// : https">
+                    <input class="btn btn-sm btn-outline-dark" type="submit" value="إنشاء" />
+                </form>
+            </div>
+            @if (@ViewBag.QRCode != null)
+            {
+                <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12">
+                    <img id="qr-code" src="@ViewBag.QRCode" width="200px;" height="200px;">
+                </div>
+            }
+        </div> <!-- End Row -->
+
+
+    </div> <!-- End Jumbotron -->
+
+
+
+</div> <!-- End of convert Section -->
+<!-- Start conact section -->
+<div id="contact" class="offset">
+
+    <div class="container-fluid footer px-0">
+        <div class="row outer">
+
+            <div class="container">
+                <div class="row py-3">
+
+
+
+                    <div class="col-12">
+                        <div class="os-animation" data-animation="fadeInUp">
+                            <h3 class="heading">تواصل معنا</h3>
+                            <div class="heading-underline"></div>
+                        </div>
+
+                        <div class="row os-animation" data-animation="fadeInUp">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <form method="post" asp-controller="Home" asp-action="ContactUs">
+
+                                    <div class="messages"></div>
+                                    <div class="controls" style="text-align: right;">
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" asp-for="@Model.Name" required="required" placeholder="اسمك">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" asp-for="@Model.Email" required="required" placeholder="بريدك الإلكتروني">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" asp-for="@Model.PhoneNumber" placeholder="رقم الجوال (اختياري)">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" asp-for="@Model.Subject" required="required" placeholder="العنوان">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <textarea asp-for="@Model.Message" rows="4" class="form-control" required="required" placeholder="رسالتك"></textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-sm btn-outline-light">إرسال</button>
+
+                                    </div> <!-- End Controls -->
+
+                                </form> <!-- End Form -->
+                            </div> <!--End Col-->
+                        @if(@ViewBag.Message != null) { 
+                            <div class="col-lg-6 col-md-6 col-sm-12 os-animation" data-animation="fadeInUp">
+                                <div class="alert alert-info" role="alert">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    @ViewBag.Message
+                                </div>
+                              
+                            </div>
+                            }
+                            </div> <!--End Row-->
+
+
+
+                        </div> <!-- End col -->
+
+                </div> <!-- End Row -->
+            </div> <!-- End Container -->
+
+            <hr class="socket">
+            <div class="row container-fluid">
+                <div class="col-lg-8 col-md-8 col-sm-6" style="text-align: right;">
+                    &copy; تطوير : م.بدر بن حميد
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <ul class="social">
+                        <li><a href="https://twitter.com/5Badr"><i class="fab fa-twitter-square"></i></a></li>
+                        <li><a href="https://github.com/badr-salem"><i class="fab fa-github-square"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/badr-binhomeed/"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div><!-- End Row Outer -->
+
+    </div> <!-- End Container Fluid -->
+    <!-- Top Scroll -->
+    <a href="#home" class="top-scroll">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div> 
+    
+
+<!-- End conact section -->
+
+
+
